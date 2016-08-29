@@ -5,12 +5,10 @@ app.controller('mainCtrl', function($scope) {
     $scope.sequenceArray = [];
     
     $scope.sequence = function() {
-        sequenceArray = [];
+        $scope.sequenceArray = [];
         for (var x = 0; x <= $scope.sequenceLength; x+=1) {
             $scope.sequenceArray.push(Math.ceil(Math.random() * $scope.level));
         }
-        
-        console.log($scope.sequenceArray);
     }
     
     $scope.sequence();

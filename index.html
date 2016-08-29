@@ -10,7 +10,10 @@
     <body>
         <div ng-app='perfPitch'>
             <div ng-controller='mainCtrl'>
-                <h3 ng-repeat='item in sequenceArray track by $index'>{{item}}</h3>
+                <div class='display-container'>
+                    <div class='display-number' ng-repeat='item in sequenceArray track by $index'>{{item}}</div>
+                </div>
+                <button ng-click='sequence()'>Reset</button>
             </div>
         </div>
         <script src='js/perfPitch.js'></script>
