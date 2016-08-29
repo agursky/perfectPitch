@@ -5,13 +5,13 @@
         <link type="text/css" rel="stylesheet" href="css/perfPitch.css"/>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     </head>
     <body>
         <div ng-app='perfPitch'>
-            <div ng-controller='mainCtrl'>
+            <div ng-controller='mainCtrl' ng-init='init()'>
                 <div class='display-container'>
-                    <div class='display-number' ng-repeat='item in sequenceArray track by $index'>{{item}}</div>
+                    <div class='display-number' ng-repeat='item in gameData.currentSequence track by $index'>{{item}}</div>
                 </div>
                 <button ng-click='sequence()'>Reset</button>
             </div>

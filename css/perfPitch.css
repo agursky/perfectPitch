@@ -6,14 +6,14 @@ body {
     width: 342px;
     display: block;
     margin: auto;
-    margin-top: 80px;
+    margin-top: 40px;
 }
 
 .display-number {
     display: inline-block;
     border: 1px solid #bfbfbf;
     margin: 8px;
-    padding: 40px 44px;
+    padding: 20px 24px;
     border-radius: 50%;
     background-color: white;
 }
