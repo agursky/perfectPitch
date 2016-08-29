@@ -4,6 +4,7 @@
         <link type="text/css" rel="stylesheet" href="css/zero.css"/>
         <link type="text/css" rel="stylesheet" href="css/perfPitch.css"/>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link href='https://fonts.googleapis.com/css?family=Paytone+One|Khula:400,800' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     </head>
@@ -11,7 +12,16 @@
         <div ng-app='perfPitch'>
             <div ng-controller='mainCtrl' ng-init='init()'>
                 <div class='display-container'>
+                    <h3>Current Sequence</h3>
                     <div class='display-number' ng-repeat='item in gameData.currentSequence track by $index'>{{item}}</div>
+                </div>
+                <div class='user-input-container'>
+                    <h3>User Input</h3>
+                    <div class='display-number' ng-repeat='item in userData.currentEntry track by $index'>{{item}}</div>
+                </div>
+                <div class='user-control-container'>
+                    <h3>User Controls</h3>
+                    <button class='display-number' ng-repeat='item in gameData.controls track by $index' ng-click='userEnter(item)'>{{item}}</button>
                 </div>
                 <button ng-click='sequence()'>Reset</button>
             </div>

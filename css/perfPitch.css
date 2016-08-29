@@ -1,9 +1,17 @@
 body {
     background-color: #d7e9ff;
+    color: #151515;
+    font-family: "Khula", sans-serif;
+    box-sizing: border-box;
 }
 
-.display-container {
-    width: 342px;
+h3 {
+/*    margin: 12px;*/
+}
+
+.display-container, .user-input-container, .user-control-container {
+    text-align: center;
+    width: 100%;
     display: block;
     margin: auto;
     margin-top: 40px;
