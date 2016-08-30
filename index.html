@@ -11,6 +11,7 @@
     <body>
         <div ng-app='perfPitch'>
             <div ng-controller='mainCtrl' ng-init='init()'>
+                {{accuracy}}
                 <div class='display-container'>
                     <h3>Current Sequence</h3>
                     <div class='display-number' ng-repeat='item in gameData.currentSequence track by $index'>{{item}}</div>
@@ -21,9 +22,19 @@
                 </div>
                 <div class='user-control-container'>
                     <h3>User Controls</h3>
-                    <button class='display-number' ng-repeat='item in gameData.controls track by $index' ng-click='userEnter(item)'>{{item}}</button>
+                    <button class='display-number' ng-repeat='item in gameData.controls track by $index' ng-click='userEnter(item)' type="button">{{item}}</button>
                 </div>
-                <button ng-click='sequence()'>Reset</button>
+                <button ng-click='sequence()' type="button">Reset</button>
+                <div class='modal modal-win'>
+                    <div class='modal-header'>Great Job</div>
+                    <span>You did good!</span>
+                    <button type='button'>OK</button>
+                </div>
+                <div class='modal modal-lose'>
+                    <div class='modal-header'>Sorry:(</div>
+                    <span>You'll have to try again.</span>
+                    <button type='button'>OK</button>
+                </div>
             </div>
         </div>
         <script src='js/perfPitch.js'></script>
