@@ -30,7 +30,6 @@ app.controller('mainCtrl', function($scope) {
     
     $scope.sequence = function() {
         $scope.gameData.currentSequence = [];
-        $scope.userData.currentEntry = [];
         for (var x = 1; x <= $scope.gameData.length; x+=1) {
             $scope.gameData.currentSequence.push(Math.ceil(Math.random() * $scope.gameData.level));
         }
@@ -42,19 +41,27 @@ app.controller('mainCtrl', function($scope) {
     
     $scope.currentSequencePos = 0;
     $scope.accuracy = true;
+    $scope.entryComplete = false;
     
     $scope.resetEntryData = function() {
         $scope.currentSequencePos = 0;
         $scope.accuracy = true;
+        $scope.entryComplete = false;
         $scope.userData.currentEntry = [];
     }
     
     $scope.userEnter = function(el) {
-        if(el !== $scope.gameData.currentSequence[$scope.currentSequencePos]) {
-            $scope.accuracy = false;
-        } else {
-            $scope.userData.currentEntry.push(el);
-            $scope.currentSequencePos+=1;
+        console.log($scope.currentSequencePos);
+        console.log($scope.gameData.length);
+        if ($scope.currentSequencePos < $scope.gameData.length - 1) {
+            if(el !== $scope.gameData.currentSequence[$scope.currentSequencePos]) {
+                $scope.accuracy = false;
+            } else {
+                $scope.userData.currentEntry.push(el);
+                $scope.currentSequencePos+=1;
+            }
+        } else if ($scope.currentSequencePos === $scope.gameData.length - 1){
+            $scope.entryComplete = true;
         }
     }
     
