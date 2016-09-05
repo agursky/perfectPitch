@@ -25,6 +25,10 @@ app.controller('mainCtrl', function($scope) {
         'currentEntry': []
     }
     
+    $scope.soundArray = [
+            'c', 'c_sharp', 'd', 'd_sharp', 'e', 'f', 'f_sharp', 'g', 'g_sharp', 'a', 'a_sharp', 'b'
+        ];
+    
 /****Sequence**************************************/
 
     

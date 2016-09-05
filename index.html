@@ -21,9 +21,71 @@
                 </div>
                 <div class='user-control-container'>
                     <h3>User Controls</h3>
-                    <button class='display-number' ng-repeat='item in gameData.controls track by $index' ng-click='userEnter(item)' type="button">{{item}}</button>
+                    <button class='display-number display-number-box' ng-repeat='item in soundArray' ng-click='userEnter(item)' type="button">{{item}}</button>
                 </div>
                 <button ng-click='sequence()' type="button">Reset</button>
+                <div id='note-container'>
+                    <audio id='note_c'>
+                      <source src="audio/c.ogg" type="audio/ogg">
+                      <source src="audio/c.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_c_sharp'>
+                      <source src="audio/c_sharp.ogg" type="audio/ogg">
+                      <source src="audio/c_sharp.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_d'>
+                      <source src="audio/d.ogg" type="audio/ogg">
+                      <source src="audio/d.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_d_sharp'>
+                      <source src="audio/d_sharp.ogg" type="audio/ogg">
+                      <source src="audio/d_sharp.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_e'>
+                      <source src="audio/e.ogg" type="audio/ogg">
+                      <source src="audio/e.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_f'>
+                      <source src="audio/f.ogg" type="audio/ogg">
+                      <source src="audio/f.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_f_sharp'>
+                      <source src="audio/f_sharp.ogg" type="audio/ogg">
+                      <source src="audio/f_sharp.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_g'>
+                      <source src="audio/g.ogg" type="audio/ogg">
+                      <source src="audio/g.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_g_sharp'>
+                      <source src="audio/g_sharp.ogg" type="audio/ogg">
+                      <source src="audio/g_sharp.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_a'>
+                      <source src="audio/a.ogg" type="audio/ogg">
+                      <source src="audio/a.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_a_sharp'>
+                      <source src="audio/a_sharp.ogg" type="audio/ogg">
+                      <source src="audio/a_sharp.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <audio id='note_b'>
+                      <source src="audio/b.ogg" type="audio/ogg">
+                      <source src="audio/b.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                </div>
                 <div class='modal modal-win' ng-show='entryComplete'>
                     <div class='modal-header'>Great Job</div>
                     <span>You did good!</span>

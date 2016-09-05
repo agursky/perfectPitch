@@ -27,6 +27,10 @@ h3 {
     background-color: white;
 }
 
+.display-number-box {
+    border-radius: 0 !important;
+}
+
 button {
     padding: 10px 36px;
     display: block;
