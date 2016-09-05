@@ -21,14 +21,10 @@ h3 {
 .display-number {
     display: inline-block;
     border: 1px solid #bfbfbf;
-    margin: 8px;
+    margin: 4px;
     padding: 20px 24px;
-    border-radius: 50%;
+/*    border-radius: 50%;*/
     background-color: white;
-}
-
-.display-number-box {
-    border-radius: 0 !important;
 }
 
 button {

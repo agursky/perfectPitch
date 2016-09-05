@@ -21,7 +21,7 @@
                 </div>
                 <div class='user-control-container'>
                     <h3>User Controls</h3>
-                    <button class='display-number display-number-box' ng-repeat='item in soundArray' ng-click='userEnter(item)' type="button">{{item}}</button>
+                    <button class='display-number' ng-repeat='item in currentNoteBank' ng-click='userEnter(item)' type="button">{{item}}</button>
                 </div>
                 <button ng-click='sequence()' type="button">Reset</button>
                 <div id='note-container'>

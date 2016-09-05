@@ -5,6 +5,7 @@ app.controller('mainCtrl', function($scope) {
     $scope.init = function() {
         $scope.sequence();
         $scope.renderControls();
+        $scope.setNoteBank();
     }
     
     $scope.renderControls = function() {
@@ -14,7 +15,7 @@ app.controller('mainCtrl', function($scope) {
     }
     
     $scope.gameData = {
-        "level": 2, 
+        "level": 1, 
         "length": 6,
         "currentSequence": [],
         "controls": []
@@ -29,13 +30,25 @@ app.controller('mainCtrl', function($scope) {
             'c', 'c_sharp', 'd', 'd_sharp', 'e', 'f', 'f_sharp', 'g', 'g_sharp', 'a', 'a_sharp', 'b'
         ];
     
+    $scope.currentNoteBank = [];
+    $scope.setNoteBank = function() {
+        $scope.currentNoteBank = [];
+        for (var x = 0; x <= $scope.gameData.level; x+=1) {
+            $scope.currentNoteBank.push($scope.soundArray[x]);
+        }
+    }
+    
 /****Sequence**************************************/
 
     
     $scope.sequence = function() {
         $scope.gameData.currentSequence = [];
+        console.log('**************new entry*************');
         for (var x = 1; x <= $scope.gameData.length; x+=1) {
-            $scope.gameData.currentSequence.push(Math.ceil(Math.random() * $scope.gameData.level));
+            $scope.newEntry = Math.ceil(Math.random() * $scope.gameData.level);
+            $scope.gameData.currentSequence.push($scope.soundArray[$scope.newEntry]);
+            console.log($scope.soundArray[$scope.newEntry]);
+            
         }
         $scope.resetEntryData();
     }
@@ -57,16 +70,18 @@ app.controller('mainCtrl', function($scope) {
     $scope.userEnter = function(el) {
         console.log($scope.currentSequencePos);
         console.log($scope.gameData.length);
-        if ($scope.currentSequencePos < $scope.gameData.length - 1) {
-            if(el !== $scope.gameData.currentSequence[$scope.currentSequencePos]) {
-                $scope.accuracy = false;
-            } else {
-                $scope.userData.currentEntry.push(el);
-                $scope.currentSequencePos+=1;
-            }
-        } else if ($scope.currentSequencePos === $scope.gameData.length - 1){
-            $scope.entryComplete = true;
-        }
+        document.getElementById('note_' + el).pause();
+        document.getElementById('note_' + el).play();
+//        if ($scope.currentSequencePos < $scope.gameData.length - 1) {
+//            if(el !== $scope.gameData.currentSequence[$scope.currentSequencePos]) {
+//                $scope.accuracy = false;
+//            } else {
+//                $scope.userData.currentEntry.push(el);
+//                $scope.currentSequencePos+=1;
+//            }
+//        } else if ($scope.currentSequencePos === $scope.gameData.length - 1){
+//            $scope.entryComplete = true;
+//        }
     }
     
     
