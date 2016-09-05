@@ -5,20 +5,18 @@ app.controller('mainCtrl', function($scope) {
     $scope.init = function() {
         $scope.sequence();
         $scope.renderControls();
-        $scope.setNoteBank();
     }//initiate data
     
     $scope.renderControls = function() {
         $scope.gameData.controls = [];
-        for (var x = 0; x <= $scope.gameData.level; x+=1) {
+        for (var x = 0; x < $scope.gameData.level; x+=1) {
             $scope.gameData.controls.push($scope.soundArray[x]);
         }
-        console.log($scope.gameData.controls);
-    }
+    }//Creates user controls based on what level the user is up to.
     
     $scope.gameData = {
-        "level": 1, 
-        "length": 6,
+        "level": 2, 
+        "length": 3,
         "currentSequence": [],
         "controls": []
     }
@@ -37,15 +35,13 @@ app.controller('mainCtrl', function($scope) {
     
     $scope.sequence = function() {
         $scope.gameData.currentSequence = [];
-        console.log('**************new entry*************');
         for (var x = 1; x <= $scope.gameData.length; x+=1) {
-            $scope.newEntry = Math.ceil(Math.random() * $scope.gameData.level);
+            $scope.newEntry = Math.ceil(Math.random() * $scope.gameData.level) - 1;
             $scope.gameData.currentSequence.push($scope.soundArray[$scope.newEntry]);
-            console.log($scope.soundArray[$scope.newEntry]);
-            
         }
         $scope.resetEntryData();
-    }
+        console.log($scope.gameData.currentSequence);
+    }//generates new sequence array. sequence is based on random number generated within range determined by what level the user is on.
     
 /****User Interaction & Evaluation**************************************/
 
@@ -62,18 +58,21 @@ app.controller('mainCtrl', function($scope) {
     }
     
     $scope.userEnter = function(el) {
-        document.getElementById('note_' + el).pause();
-        document.getElementById('note_' + el).play();
-//        if ($scope.currentSequencePos < $scope.gameData.length - 1) {
-//            if(el !== $scope.gameData.currentSequence[$scope.currentSequencePos]) {
-//                $scope.accuracy = false;
-//            } else {
-//                $scope.userData.currentEntry.push(el);
-//                $scope.currentSequencePos+=1;
-//            }
-//        } else if ($scope.currentSequencePos === $scope.gameData.length - 1){
-//            $scope.entryComplete = true;
-//        }
+        $scope.currentNote = document.getElementById('note_' + el);
+        $scope.currentNote.pause();
+        $scope.currentNote.currentTime = 0;
+        $scope.currentNote.play();
+        console.log($scope.currentSequencePos);
+        console.log($scope.gameData.length);
+        if(el !== $scope.gameData.currentSequence[$scope.currentSequencePos]) {
+                $scope.accuracy = false;
+        } else if ($scope.currentSequencePos < $scope.gameData.length - 1) {
+            $scope.userData.currentEntry.push(el);
+            $scope.currentSequencePos+=1;
+        } else if ($scope.currentSequencePos === $scope.gameData.length - 1) {
+            $scope.userData.currentEntry.push(el);
+            $scope.entryComplete = true;
+        }
     }
     
     
