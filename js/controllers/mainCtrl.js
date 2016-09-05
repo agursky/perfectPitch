@@ -6,12 +6,14 @@ app.controller('mainCtrl', function($scope) {
         $scope.sequence();
         $scope.renderControls();
         $scope.setNoteBank();
-    }
+    }//initiate data
     
     $scope.renderControls = function() {
-        for (var x = 1; x <= $scope.gameData.level; x+=1) {
-            $scope.gameData.controls.push(x);
+        $scope.gameData.controls = [];
+        for (var x = 0; x <= $scope.gameData.level; x+=1) {
+            $scope.gameData.controls.push($scope.soundArray[x]);
         }
+        console.log($scope.gameData.controls);
     }
     
     $scope.gameData = {
@@ -29,14 +31,6 @@ app.controller('mainCtrl', function($scope) {
     $scope.soundArray = [
             'c', 'c_sharp', 'd', 'd_sharp', 'e', 'f', 'f_sharp', 'g', 'g_sharp', 'a', 'a_sharp', 'b'
         ];
-    
-    $scope.currentNoteBank = [];
-    $scope.setNoteBank = function() {
-        $scope.currentNoteBank = [];
-        for (var x = 0; x <= $scope.gameData.level; x+=1) {
-            $scope.currentNoteBank.push($scope.soundArray[x]);
-        }
-    }
     
 /****Sequence**************************************/
 
@@ -68,8 +62,6 @@ app.controller('mainCtrl', function($scope) {
     }
     
     $scope.userEnter = function(el) {
-        console.log($scope.currentSequencePos);
-        console.log($scope.gameData.length);
         document.getElementById('note_' + el).pause();
         document.getElementById('note_' + el).play();
 //        if ($scope.currentSequencePos < $scope.gameData.length - 1) {
