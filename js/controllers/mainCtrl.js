@@ -1,4 +1,4 @@
-app.controller('mainCtrl', function($scope) {
+app.controller('mainCtrl', function($scope, $interval, $timeout) {
     
 /****Initial Data**************************************/
     
@@ -15,7 +15,7 @@ app.controller('mainCtrl', function($scope) {
     }//Creates user controls based on what level the user is up to.
     
     $scope.gameData = {
-        "level": 2, 
+        "level": 4, 
         "length": 3,
         "currentSequence": [],
         "controls": []
@@ -39,9 +39,24 @@ app.controller('mainCtrl', function($scope) {
             $scope.newEntry = Math.ceil(Math.random() * $scope.gameData.level) - 1;
             $scope.gameData.currentSequence.push($scope.soundArray[$scope.newEntry]);
         }
+        $timeout(function() {
+            $scope.playSequenceNotes();
+        }, 1500)
+        
         $scope.resetEntryData();
         console.log($scope.gameData.currentSequence);
+        
     }//generates new sequence array. sequence is based on random number generated within range determined by what level the user is on.
+    
+    $scope.playSequenceNotes = function() {
+        $scope.itr = 0;
+        document.getElementById('note_' + $scope.gameData.currentSequence[$scope.itr]).play();
+        $scope.itr+=1;
+        $interval(function() {
+            document.getElementById('note_' + $scope.gameData.currentSequence[$scope.itr]).play();
+            $scope.itr+=1;
+        }, 3000, $scope.gameData.length - 1);
+    }
     
 /****User Interaction & Evaluation**************************************/
 
@@ -73,11 +88,7 @@ app.controller('mainCtrl', function($scope) {
             $scope.userData.currentEntry.push(el);
             $scope.entryComplete = true;
         }
-    }
-    
-    
-    
-    
-    
+    }//plays notes that user plays, and evaluates them against the generated sequence for accuracy.
+
     
 }) 

@@ -24,6 +24,7 @@
                     <button class='display-number' ng-repeat='item in gameData.controls' ng-click='userEnter(item)' type="button">{{item}}</button>
                 </div>
                 <button ng-click='sequence()' type="button">Reset</button>
+                <button ng-click='playSequenceNotes()' type="button">Play Current Sequence</button>
                 <div id='note-container'>
                     <audio id='note_c'>
                       <source src="audio/c.ogg" type="audio/ogg">
